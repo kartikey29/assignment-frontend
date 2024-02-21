@@ -1,24 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Button } from "@mui/material";
+import React, { useState } from "react";
+import LoginSignup from "./pages/LoginSignup";
+import { useSelector } from "react-redux";
+import { State } from "./types";
+import FBIntergration from "./pages/FBIntergration";
+import DashBoard from "./pages/DashBoard";
 
 function App() {
+  const login = useSelector((state: State) => state.loginState);
+  const FBState = useSelector((state: State) => state.FBState);
+  const [showDash, setShowDash] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {!login ? (
+        <LoginSignup></LoginSignup>
+      ) : FBState && showDash ? (
+        <DashBoard></DashBoard>
+      ) : (
+        <FBIntergration setShowDash={setShowDash}></FBIntergration>
+      )}
     </div>
   );
 }
