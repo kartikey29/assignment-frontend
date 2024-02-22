@@ -35,9 +35,10 @@ const Chat = () => {
     <div className="h-screen border flex flex-col">
       <div className="p-4 text-xl border font-semibold">Amit RG</div>
       <div className="flex-1 bg-[#F6F6F6] p-4 pt-6 overflow-scroll flex flex-col gap-3 overflow-x-hidden">
-        {messages.map((dat) => {
+        {messages.map((dat, i) => {
           return (
             <Message
+              key={i}
               type={dat.type}
               data={{ text: dat.text, time: new Date(dat.date) }}
             ></Message>

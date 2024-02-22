@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LoginSignup from "./pages/LoginSignup";
 import { useSelector } from "react-redux";
 import { State } from "./types";
@@ -11,6 +11,7 @@ function App() {
   const FBState = useSelector((state: State) => state.FBState);
   const [showDash, setShowDash] = useState(false);
 
+  // }, []);
   return (
     <div>
       {!login ? (

@@ -1,12 +1,11 @@
-import React from "react";
-import { Button } from "@mui/material";
+import React, { ChangeEventHandler } from "react";
+import { Button, ButtonProps } from "@mui/material";
 
-type Props = {
+type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   label: String;
-  onClick?: (arg0: any) => void;
 };
 const CusBtn = (props: Props) => {
-  const { label, onClick } = props;
+  const { label, onClick, type } = props;
 
   return (
     <Button
@@ -14,6 +13,7 @@ const CusBtn = (props: Props) => {
       className="w-[100%] h-[45px] "
       sx={{ backgroundColor: "#1E4D91" }}
       onClick={onClick}
+      type={type}
     >
       {label}
     </Button>

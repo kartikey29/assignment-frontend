@@ -21,10 +21,10 @@ const UserInfo = () => {
           </div>
         </div>
         <div className="flex gap-2">
-          <div className="min-w-[80px] flex justify-center items-center text-[#545454] p-2 border gap-1 text-sm">
+          <div className="min-w-[80px] flex justify-center items-center text-[#545454] p-2 border-2 border-gray-200 rounded-md gap-1 text-sm">
             <PhoneIcon sx={{ fontSize: "20px" }}></PhoneIcon> Call
           </div>
-          <div className="min-w-[80px] flex justify-center items-center text-[#545454] p-2 border gap-1 text-sm">
+          <div className="min-w-[80px] flex justify-center items-center text-[#545454] p-2 border-2 border-gray-200 rounded-md gap-1 text-sm">
             <AccountCircleIcon sx={{ fontSize: "20px" }}></AccountCircleIcon>
             Profile
           </div>

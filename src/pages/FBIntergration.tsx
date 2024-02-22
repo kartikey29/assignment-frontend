@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CusBtn from "../components/CusBtn";
 import { Button } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { State } from "../types";
+import { LoginSocialFacebook } from "reactjs-social-login";
+import { getFacebookLoginStatus, fbLogin, logout } from "../util/FacebookSDK";
 
 type Props = {
   setShowDash: React.Dispatch<React.SetStateAction<boolean>>;
@@ -11,6 +13,18 @@ type Props = {
 const FBIntergration = (props: Props) => {
   const FBloggedIn = useSelector((state: State) => state.FBState);
   const dispatch = useDispatch();
+
+  const handleLogin = () => {
+    fbLogin().then((res) => {
+      if (res.status === "connected") {
+        console.log("Person is connected");
+        dispatch({ type: "FB_INTEGRATED" });
+        console.log(res);
+      } else {
+        // something
+      }
+    });
+  };
 
   return (
     <div className="min-h-screen flex justify-center items-center bg-[#1E4D91]">
@@ -21,12 +35,8 @@ const FBIntergration = (props: Props) => {
               <h1 className="text-lg font-medium">
                 Facebook Page Integration{" "}
               </h1>
-              <CusBtn
-                label={"Connect Page"}
-                onClick={() => {
-                  dispatch({ type: "FB_INTEGRATED" });
-                }}
-              ></CusBtn>
+
+              <CusBtn label={"Connect Page"} onClick={handleLogin}></CusBtn>
             </div>
           </>
         ) : (
@@ -46,7 +56,9 @@ const FBIntergration = (props: Props) => {
                   className="w-[100%] h-[45px] "
                   color="error"
                   onClick={() => {
-                    dispatch({ type: "REMOVE_INTEGRATION" });
+                    logout().then(() => {
+                      dispatch({ type: "REMOVE_INTEGRATION" });
+                    });
                   }}
                 >
                   Delete integration
