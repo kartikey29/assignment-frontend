@@ -13,8 +13,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
-import { Avatar, Box, Icon, Badge } from "@mui/material";
+import { Avatar, Box, Icon, Badge, Menu, MenuItem } from "@mui/material";
 import AgentPic from "../assets/AgentPic.jpg";
+import { useDispatch } from "react-redux";
 const drawerWidth = 240;
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
@@ -109,6 +110,17 @@ export default function SideBar(props: Props) {
     setOpen(false);
   };
 
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const opeen = Boolean(anchorEl);
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const dispatch = useDispatch();
+
   return (
     <Drawer
       variant="permanent"
@@ -198,15 +210,23 @@ export default function SideBar(props: Props) {
           ))}
         </List>
         <List>
-          <ListItem className="mb-4">
+          <ListItem className="mb-4 relative">
             <ListItemIcon>
-              <StyledBadge
-                overlap="circular"
-                anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
-                variant="dot"
+              <IconButton
+                aria-controls={open ? "account-menu" : undefined}
+                aria-haspopup="true"
+                aria-expanded={opeen ? "true" : undefined}
+                onClick={handleClick}
+                sx={{ position: "relative", right: "12px" }}
               >
-                <Avatar src={AgentPic}></Avatar>
-              </StyledBadge>
+                <StyledBadge
+                  overlap="circular"
+                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                  variant="dot"
+                >
+                  <Avatar src={AgentPic}></Avatar>
+                </StyledBadge>
+              </IconButton>
             </ListItemIcon>
             <ListItemText
               primary={"Richard panel"}
@@ -217,6 +237,23 @@ export default function SideBar(props: Props) {
             />
           </ListItem>
         </List>
+        <Menu
+          id="account-menu"
+          anchorEl={anchorEl}
+          open={opeen}
+          onClose={handleClose}
+          MenuListProps={{
+            "aria-labelledby": "profile",
+          }}
+        >
+          <MenuItem
+            onClick={() => {
+              dispatch({ type: "LOGOUT" });
+            }}
+          >
+            Logout
+          </MenuItem>
+        </Menu>
       </Box>
     </Drawer>
   );

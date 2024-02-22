@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SideBar from "../components/SideBar";
 import { Box, CssBaseline } from "@mui/material";
-import ConvoPage from "./ConvoPage";
+import ConvoComponent from "../components/conversation/ConvoComponent";
 
 const DashBoard = () => {
   const [selected, setSelected] = useState("conv");
@@ -9,7 +9,7 @@ const DashBoard = () => {
   const renderSelected = () => {
     switch (selected) {
       case "conv":
-        return <ConvoPage />;
+        return <ConvoComponent />;
       default:
         return (
           <div className="min-h-screen flex justify-center items-center text-center relative">

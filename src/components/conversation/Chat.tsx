@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import Message from "./Message";
-import { ChatData } from "../chatData";
+import { ChatData } from "../../chatData";
 
 const Chat = () => {
   const [messages, setMessages] = useState(ChatData);

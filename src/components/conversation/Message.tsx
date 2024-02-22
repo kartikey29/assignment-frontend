@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import React, { useRef } from "react";
-import ProfilePic from "../assets/profilePic.jpg";
-import AgentPic from "../assets/AgentPic.jpg";
+import ProfilePic from "../../assets/profilePic.jpg";
+import AgentPic from "../../assets/AgentPic.jpg";
 
 type Props = {
   type: string;

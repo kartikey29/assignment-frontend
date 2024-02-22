@@ -5,10 +5,7 @@ export const loginState = (state = false, action: Action) => {
     case "LOGIN_SUCCESS":
       return true;
     case "LOGOUT":
-      localStorage.removeItem("jwtToken");
-      localStorage.removeItem("userData");
-      localStorage.removeItem("orgID");
-      localStorage.removeItem("login");
+      localStorage.removeItem("token");
       return false;
     default:
       return state;

@@ -1,9 +1,9 @@
 import React from "react";
-import Chat from "../components/Chat";
-import UserInfo from "../components/UserInfo";
-import ConvoList from "../components/ConvoList";
+import Chat from "./Chat";
+import UserInfo from "./UserInfo";
+import ConvoList from "./ConvoList";
 
-const ConvoPage = () => {
+const ConvoComponent = () => {
   return (
     <div className="flex">
       <div className="min-h-screen lg:w-[275px] xl:w-[350px] border ">
@@ -19,4 +19,4 @@ const ConvoPage = () => {
   );
 };
 
-export default ConvoPage;
+export default ConvoComponent;

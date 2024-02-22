@@ -1,5 +1,5 @@
 import { Avatar } from "@mui/material";
-import ProfilePic from "../assets/profilePic.jpg";
+import ProfilePic from "../../assets/profilePic.jpg";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import PhoneIcon from "@mui/icons-material/Phone";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
