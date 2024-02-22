@@ -22,7 +22,7 @@ const Register = (props: Props) => {
     const body = { name, password, email };
     try {
       const res = await axios.post(
-        "http://localhost:5000/user/createuser",
+        `${process.env.REACT_APP_BACKEND_URL}/user/createuser`,
         body
       );
       // setUserData(res.data);

@@ -19,7 +19,10 @@ const Login = (props: Props) => {
     e.preventDefault();
     const body = { email, password };
     try {
-      const res = await axios.post("http://localhost:5000/user/login", body);
+      const res = await axios.post(
+        `${process.env.REACT_APP_BACKEND_URL}/user/login`,
+        body
+      );
 
       localStorage.setItem("token", JSON.stringify(res.data.token));
 
